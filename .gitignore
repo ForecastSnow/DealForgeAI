@@ -1,0 +1,9 @@
+venv
+.env
+notes.md
+__pycache__
+test
+-objetiveAndData
+iaGenerationSaves.json
+output
+input
