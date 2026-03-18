@@ -102,3 +102,12 @@ python3 src/main.py
 ```
 
 > **Note:** Upon completion of the commands, the system's CLI interface will automatically initialize in your terminal, prompting for the selection of the Deal to process.
+
+### 4. Data Ingestion (Feeding the System)
+
+Once you execute the script for the first time, an `input/` directory will be automatically generated in the root of the project. This is where the system ingests the data for the memorandum.
+
+To load your data:
+1. Create a new subfolder inside the `input/` directory (e.g., `input/MyNewDeal/`).
+2. Drop all the relevant files for your memorandum into this subfolder.
+3. **Supported formats:** `.json`, `.pdf`, and Excel files (`.xlsx`, `.xls`).
