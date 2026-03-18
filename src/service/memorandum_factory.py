@@ -1,6 +1,6 @@
 from pathlib import Path
 from docxtpl import DocxTemplate
-
+from datetime import datetime
 
 class MemorandumFactory:
     def __init__(self, project_root: str = "."):
@@ -29,8 +29,11 @@ class MemorandumFactory:
 
         structure = ia_response.get("used_structure")
         payload = ia_response.get("payload", {})
+        payload["date"] = datetime.now().strftime("%d/%m/%y")
+        payload["analyst_name"] = "IA AGENT"
 
         project_name = payload.get("project_name", "memo")
+        
 
         path_template = self.templates_map.get(structure)
 
@@ -47,7 +50,8 @@ class MemorandumFactory:
             doc.render(payload)
 
             safe_project_name = project_name.replace(" ", "_")
-            output_path = self.output_dir / f"{safe_project_name}.docx"
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            output_path = self.output_dir / f"{safe_project_name}_{timestamp}.docx"
 
             doc.save(output_path)
             return str(output_path)
